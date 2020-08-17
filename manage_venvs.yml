@@ -8,7 +8,7 @@
           url: "https://{{ ansible_default_ipv4.address }}/api/v2/settings/syste  m/"
           method: GET                                                           
           user: "{{ toweruser }}"                                               
-          password: "{{towerpass }}"                                            
+          password: "{{ towerpass }}"                                            
           force_basic_auth: yes                                                 
           return_content: True                                                  
           validate_certs: False                                                 
