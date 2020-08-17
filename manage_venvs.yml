@@ -1,18 +1,18 @@
-  ---                                                                           
-  - hosts: tower                                                                
-    become: True                                                                
-    gather_facts: True                                                          
-    pre_tasks:                                                                  
-      - name: Get current custom venv path(s)                                   
-        uri:                                                                    
-          url: "https://{{ ansible_default_ipv4.address }}/api/v2/settings/syste  m/"
-          method: GET                                                           
-          user: "{{ toweruser }}"                                               
-          password: "{{ towerpass }}"                                            
-          force_basic_auth: yes                                                 
-          return_content: True                                                  
-          validate_certs: False                                                 
-        register: tower_info                                                    
-                                                                                
-    roles:                                                                      
-      - manage_venvs
+---
+- hosts: tower
+  become: True
+  gather_facts: True
+  pre_tasks:
+    - name: Get current custom venv path(s)
+      uri:
+        url: "https://{{ ansible_default_ipv4.address }}/api/v2/settings/syste  m/"
+        method: GET
+        user: "{{ toweruser }}"
+        password: "{{ towerpass }}"
+        force_basic_auth: yes
+        return_content: True
+        validate_certs: False
+      register: tower_info
+
+  roles:
+    - manage_venvs

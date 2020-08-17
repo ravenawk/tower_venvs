@@ -6,7 +6,7 @@ python: {
 }
 venv_rpm_packages:
   - "{{ python.dev_version }}"
-  - "{{ venv_version }}"
+  - "{{ python.venv_version }}"
   - gcc
 manage_venvs_parent_dir: /opt/custom_venv
 venv_dir: venv_test1

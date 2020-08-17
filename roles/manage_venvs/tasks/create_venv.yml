@@ -10,7 +10,7 @@
 
 - name: Install needed packages for virtual environment
   dnf:
-    name: "{{ venv_rpm_devel }}"
+    name: "{{ venv_rpm_packages }}"
     state: present
 
 - name: Create requirements.txt file
