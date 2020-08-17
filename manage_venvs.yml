@@ -5,7 +5,7 @@
   pre_tasks:
     - name: Get current custom venv path(s)
       uri:
-        url: "https://{{ ansible_default_ipv4.address }}/api/v2/settings/syste  m/"
+        url: "https://{{ ansible_default_ipv4.address }}/api/v2/settings/system/"
         method: GET
         user: "{{ toweruser }}"
         password: "{{ towerpass }}"
