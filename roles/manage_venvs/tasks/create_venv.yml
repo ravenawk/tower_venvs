@@ -1,0 +1,25 @@
+- name: Set the virtual environment path
+  set_fact:
+    venv_path: "{{ manage_venvs_parent_dir }}/{{venv_dir }}"
+
+- name: Create virtual env directories
+  file:
+    path: "{{ venv_path }}"
+    state: directory
+    mode: '0755'
+
+- name: Install needed packages for virtual environment
+  dnf:
+    name: "{{ venv_rpm_devel }}"
+    state: present
+
+- name: Create requirements.txt file
+  template:
+    src: requirements.j2
+    dest: "{{ venv_path }}/requirements.txt"
+
+- name: Setup the environment using python3
+  pip:
+    requirements: "{{ venv_path }}/requirements.txt"
+    virtualenv: "{{ venv_path }}/{{ venv_name }}"
+    virtualenv_python: "{{ python.sys_version }}"

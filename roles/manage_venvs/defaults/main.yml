@@ -1,0 +1,17 @@
+---
+python: {
+  sys_version: python3.6,
+  dev_version: python36-devel,
+  venv_version: python3-virtualenv
+}
+venv_rpm_packages:
+  - "{{ python.dev_version }}"
+  - "{{ venv_version }}"
+  - gcc
+manage_venvs_parent_dir: /opt/custom_venv
+venv_dir: venv_test1
+venv_name: venv_test1
+venv_requirments: requirements.txt
+venv_packages: 
+  - ncclient
+  - netaddr

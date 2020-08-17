@@ -1,0 +1,23 @@
+- name: Create virtual env directories
+  file:
+    path: "{{ manage_venvs_parent_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Merge the custom venv paths with current
+  set_fact:
+    custom_venv_paths: "{{ tower_info.json.CUSTOM_VENV_PATHS | 
+    union([manage_venvs_parent_dir]) }}"
+
+- name: Set new custom venv path if needed
+  uri:
+    url: "https://{{ ansible_default_ipv4.address }}/api/v2/settings/system/"
+    method: PATCH
+    user: "{{ toweruser }}"
+    password: "{{ towerpass }}"
+    force_basic_auth: yes
+    return_content: True
+    validate_certs: False
+    body_format: json
+    body:
+      { CUSTOM_VENV_PATHS: "{{ custom_venv_paths }}"}
