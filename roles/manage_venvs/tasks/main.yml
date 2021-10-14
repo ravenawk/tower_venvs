@@ -1,7 +1,7 @@
 ---
 - name: include creation of parent directory and addint to tower (if needed)
   include: manage_venv_parent.yml
-  when: manage_venvs_parent_dir not in tower_info.json.CUSTOM_VENV_PATHS
+  when: venvs_parent_dir not in tower_info.json.CUSTOM_VENV_PATHS
 
 - name: Create virtual environment
   include: create_venv.yml

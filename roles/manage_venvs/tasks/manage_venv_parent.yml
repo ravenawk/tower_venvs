@@ -1,13 +1,15 @@
 - name: Create virtual env directories
   file:
-    path: "{{ manage_venvs_parent_dir }}"
+    path: "{{ venvs_parent_dir }}"
     state: directory
+    owner: awx
+    group: awx
     mode: '0755'
 
 - name: Merge the custom venv paths with current
   set_fact:
     custom_venv_paths: "{{ tower_info.json.CUSTOM_VENV_PATHS | 
-    union([manage_venvs_parent_dir]) }}"
+    union([venvs_parent_dir]) }}"
 
 - name: Set new custom venv path if needed
   uri:

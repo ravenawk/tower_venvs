@@ -1,6 +1,6 @@
 - name: Set the virtual environment path
   set_fact:
-    venv_path: "{{ manage_venvs_parent_dir }}/{{venv_dir }}"
+    venv_path: "{{ venvs_parent_dir }}/{{venv_dir }}"
 
 - name: Create virtual env directories
   file:
@@ -21,5 +21,5 @@
 - name: Setup the environment using python3
   pip:
     requirements: "{{ venv_path }}/requirements.txt"
-    virtualenv: "{{ venv_path }}/{{ venv_name }}"
+    virtualenv: "{{ venv_path }}"
     virtualenv_python: "{{ python.sys_version }}"
