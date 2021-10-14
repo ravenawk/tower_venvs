@@ -10,9 +10,8 @@ venv_rpm_packages:
   - gcc
 venvs_parent_dir: /opt/custom_venv
 venv_dir: "{{ venv_name }}"
-venv_name: ""
+venv_name: new_venv
 venv_requirments: requirements.txt
 venv_packages: 
   - ncclient
   - netaddr
-  - awxkit==17.1.0

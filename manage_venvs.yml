@@ -1,14 +1,13 @@
 ---
-- hosts: tower
+- hosts: tower_servers
   become: True
   vars_files:
     somevault.yml #creds for ansible tower login
   vars:
-    venv_name: another_venv
+    venv_name: new_env
     venvs_parent_dir: /opt/custom_venv
     venv_packages:
       - openpyxl
-      - ansible
   gather_facts: True
   pre_tasks:
     - name: Get current custom venv path(s)
